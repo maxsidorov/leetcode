@@ -1,4 +1,4 @@
-class Solution {
+class Solution1 {
     public boolean increasingTriplet(int[] nums) {
         int i = 0, j = 0, min = 0;
         for (int n = 1; n < nums.length; n++) {
@@ -27,6 +27,23 @@ class Solution {
                 min = n;
             }
             System.out.println("n = " + n + ", i = " + i + ", j = " + j + ", min = " + min);
+        }
+        return false;
+    }
+}
+
+
+class Solution2 {
+    public boolean increasingTriplet(int[] nums) {
+        int small = Integer.MAX_VALUE, middle = Integer.MAX_VALUE;
+        for (int el: nums) {
+            if (el <= small) {
+                small = el;
+            } else if (el <= middle) {
+                middle = el;
+            } else {
+                return true;
+            }
         }
         return false;
     }
