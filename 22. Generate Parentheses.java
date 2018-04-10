@@ -37,3 +37,27 @@ class Solution2 {
         }
     }
 }
+
+
+class Solution3 {
+    public List<String> generateParenthesis(int n) {
+        List<String> result = new ArrayList();
+        generateParenthesis(result, new char[n * 2], 0, n, 0, 0);
+        return result;
+    }
+    
+    private void generateParenthesis(List<String> result, char[] chars, int i, int n, int openCount, int closeCount) {
+        if (i == n * 2) {
+            result.add(new String(chars));
+        } else {
+            if (openCount < n) {
+                chars[i] = '(';
+                generateParenthesis(result, chars, i + 1, n, openCount + 1, closeCount);
+            }
+            if (closeCount < openCount) {
+                chars[i] = ')';
+                generateParenthesis(result, chars, i + 1, n, openCount, closeCount + 1);
+            }
+        }
+    }
+}
