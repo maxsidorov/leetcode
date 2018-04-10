@@ -15,3 +15,25 @@ class Solution1 {
         }
     }
 }
+
+
+class Solution2 {
+    public List<String> generateParenthesis(int n) {
+        List<String> result = new ArrayList();
+        generateParenthesis(result, "", n, 0, 0);
+        return result;
+    }
+    
+    private void generateParenthesis(List<String> result, String s, int n, int openCount, int closeCount) {
+        if (s.length() == n * 2) {
+            result.add(s);
+        } else {
+            if (openCount < n) {
+                generateParenthesis(result, s + "(", n, openCount + 1, closeCount);
+            }
+            if (closeCount < openCount) {
+                generateParenthesis(result, s + ")", n, openCount, closeCount + 1);
+            }
+        }
+    }
+}
