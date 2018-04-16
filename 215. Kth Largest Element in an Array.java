@@ -19,3 +19,5 @@ class Solution2 {
         return minHeap.peek();
     }
 }
+
+// 3 - Quick select Avr O(N) Worst O(N*N)
