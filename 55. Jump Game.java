@@ -20,7 +20,8 @@ class Solution1 {
 }
 
 // Iteration + Stack + memo [Time limit exceeded]
-class Solution2 {
+class Solution {
+    
     public boolean canJump(int[] nums) {
         if (nums.length == 0) return false;
         if (nums.length == 1) return true;
@@ -37,6 +38,7 @@ class Solution2 {
                     }
                 }
             }
+            visited[i] = true;
         }
         return false;
     }
