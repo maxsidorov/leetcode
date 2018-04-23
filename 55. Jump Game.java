@@ -44,3 +44,20 @@ class Solution2 {
     }
 
 }
+
+// Greedy [Accepted]
+class Solution {
+    
+    public boolean canJump(int[] nums) {
+        int currStep = 1;
+        for (int i = nums.length - 2; i >= 0; i--) {
+            if (nums[i] >= currStep) {
+                currStep = 1;
+            } else {
+               currStep++; 
+            }
+        }
+        return currStep == 1;
+    }
+
+}
