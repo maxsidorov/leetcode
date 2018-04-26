@@ -1,6 +1,6 @@
 // I didn't solve it by myself!
 
-// Recursion, O (N^2)  [Time Limit Exceeded]
+// Recursion, O(2^N)  [Time Limit Exceeded]
 class Solution1 {
     public int lengthOfLIS(int[] nums) {
         if (nums.length == 0) return 0;
@@ -17,3 +17,25 @@ class Solution1 {
     }
 }
 
+// DP, O(N*N)
+class Solution2 {
+    public int lengthOfLIS(int[] nums) {
+        if (nums.length == 0) return 0;
+        int[] dp = new int[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            int max = 0;
+            for (int j = 0; j < i; j++) {
+                if (nums[i] > nums[j]) {
+                    max = Math.max(max, dp[j]);
+                }
+            }
+            dp[i] = max + 1;
+        }
+        
+        int max = 1;
+        for (int i = 0; i < nums.length; i++) {
+            max = Math.max(max, dp[i]);
+        }
+        return max;
+    }
+}
