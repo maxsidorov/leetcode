@@ -1,3 +1,4 @@
+// My solution DP + memo
 class Solution {
   public List<List<String>> partition(String s) {
     if (s == null && s.length() == 0) {
