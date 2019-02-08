@@ -53,3 +53,42 @@ class Solution {
   }
 
 }
+
+// Solution with backtracking
+import java.util.ArrayList;
+
+class Solution {
+  public List<List<String>> partition(String s) {
+    if (s == null && s.length() == 0) {
+      return new ArrayList();
+    } else {
+      return findAndFilPartitions(s, 0, new ArrayList(), new ArrayList());
+    }
+  }
+
+  private List<List<String>> findAndFilPartitions(String s, int left, List<String> currList, List<List<String>> result) {
+    if (left == s.length()) {
+      result.add(new ArrayList<String>(currList));
+    } else {
+      for (int i = left; i < s.length(); i++) {
+        if (isPalindrome(s, left, i)) {
+          currList.add(s.substring(left, i + 1));
+          findAndFilPartitions(s, i + 1, currList, result);
+          currList.remove(currList.size() - 1);
+        }
+      }
+    }
+    return result;
+  }
+
+  private boolean isPalindrome(String s, int left, int right) {
+    int len = (right - left + 1) / 2;
+    for (int i = 0; i < len; i++) {
+      if (s.charAt(left + i) != s.charAt(right - i)) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+}
